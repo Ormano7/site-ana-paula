@@ -21,7 +21,7 @@
   body {
     font-family: 'Montserrat', sans-serif;
     background-color: #f4f4ee;
-    background-image: url('bandeir.png');
+    background-image: url('assets/bandeir.png');
     background-size: cover;
     background-attachment: fixed;
     background-position: center center;
@@ -40,37 +40,23 @@
     width: 100%;
     max-width: 480px;
     height: var(--navbar-h);
-    background: rgb(255, 253, 253);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(245,216,0,0.25);
+    border-bottom: 2px solid rgba(45, 181, 66, 0.3);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 16px;
     z-index: 900;
-  }
-  .navbar {
-   transition: background 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
-  }
-
-/* estado quando rolar a página */
-  .navbar.scrolled {
-    background: rgba(255, 255, 255, 0.65);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
   }
 
   .navbar.scrolled {
-    background: rgba(255, 255, 255, 0.65);
+    background: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  }
-
-  .navbar.scrolled .navbar-link:hover {
-    color: var(--verde-escuro);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
   }
 
   .navbar-logo {
@@ -80,29 +66,31 @@
     text-decoration: none;
   }
 
-  /* Área para a logo — troque o conteúdo pelo <img> da logo real */
+  /* Área da logo — sem fundo, sem borda, mostra a imagem limpa */
   .navbar-logo-circle {
-  width: 46px;
-  height: 46px;
-  border-radius: 10px; /* menos arredondado (mais moderno que círculo) */
-  background: transparent; /* remove fundo verde se não precisar */
-  border: none; /* remove borda amarela */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
 
-.navbar-logo-circle img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* NÃO cortar a logo */
-}
+  .navbar-logo-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 
+  /* Nome da candidata ao lado da logo — visível na navbar clara */
   .navbar-brand {
     font-family: 'Dancing Script', cursive;
     font-size: 20px;
-    color: var(--branco);
+    color: var(--verde-escuro);
     line-height: 1;
   }
 
@@ -113,7 +101,7 @@
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--amarelo);
+    color: var(--verde);
     margin-top: 2px;
   }
 
@@ -128,7 +116,7 @@
     font-weight: 700;
     letter-spacing: 0.5px;
     text-transform: uppercase;
-    color: rgba(10, 199, 26, 0.65);
+    color: rgba(0, 0, 0, 0.55);
     text-decoration: none;
     padding: 6px 9px;
     border-radius: 6px;
@@ -138,37 +126,38 @@
 
   .navbar-link:hover,
   .navbar-link.active {
-    color: var(--amarelo);
-    background: rgba(245,216,0,0.1);
+    color: var(--verde-escuro);
+    background: rgba(45, 181, 66, 0.1);
   }
 
   /* ======= HERO ======= */
   .hero {
     position: relative;
-    height: 100svh;
-    min-height: 500px;
+    height: 100vh;
     overflow: hidden;
-    padding-top: var(--navbar-h);
   }
 
   .hero-slides {
     display: flex;
     width: 100%;
-    transition: transform 0.5s ease-in-out;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   }
 
   .hero-slide {
-    /* Isso impede que o slide mostre um pedaço do vizinho */
-    min-width: 100%; 
+    min-width: 100%;
     width: 100%;
-    flex-shrink: 0; 
+    height: 100%;
+    flex-shrink: 0;
+    position: relative;
   }
 
-  /* SEM overlay — imagem totalmente visível */
+  /* Sem overlay — imagem 100% visível */
   .hero-slide img {
     width: 100%;
-    height: 100vh; /* Ou a altura que você definiu */
+    height: 100%;
     object-fit: cover;
+    object-position: center 20%;
     display: block;
   }
 
@@ -187,9 +176,9 @@
     width: 42px;
     height: 42px;
     border-radius: 50%;
-    background: rgba(0,0,0,0.28);
+    background: rgba(0, 0, 0, 0.28);
     backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,255,255,0.25);
+    border: 1px solid rgba(255, 255, 255, 0.25);
     color: white;
     font-size: 22px;
     cursor: pointer;
@@ -201,7 +190,7 @@
     transition: background 0.2s;
   }
 
-  .hero-btn:active { background: rgba(245,216,0,0.45); }
+  .hero-btn:active { background: rgba(245, 216, 0, 0.45); }
 
   .hero-dots {
     position: absolute;
@@ -216,10 +205,10 @@
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.55);
+    background: rgba(255, 255, 255, 0.55);
     cursor: pointer;
     transition: all 0.3s;
-    border: 1px solid rgba(0,0,0,0.15);
+    border: 1px solid rgba(0, 0, 0, 0.15);
   }
 
   .hero-dot.active {
@@ -231,14 +220,15 @@
   /* ======= SEÇÃO CLARA ======= */
   .section-light {
     padding: 48px 0 36px;
-    background: rgba(255,255,255,0.84);
+    background: rgba(255, 255, 255, 0.88);
     backdrop-filter: blur(6px);
   }
 
-  /* ======= SEÇÃO ESCURA ======= */
+  /* ======= SEÇÃO ESCURA (próximos projetos) ======= */
+  /* Fundo sólido escuro para garantir legibilidade do texto */
   .section-dark {
     padding: 48px 0 40px;
-    background: rgba(255, 255, 255, 0.125);
+    background: rgba(10, 10, 10, 0.91);
     backdrop-filter: blur(6px);
     position: relative;
     overflow: hidden;
@@ -250,7 +240,7 @@
     top: -80px; right: -80px;
     width: 260px; height: 260px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(45,181,66,0.2) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(45, 181, 66, 0.2) 0%, transparent 70%);
     pointer-events: none;
   }
 
@@ -260,7 +250,7 @@
     bottom: -60px; left: -60px;
     width: 200px; height: 200px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(245,216,0,0.12) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(245, 216, 0, 0.1) 0%, transparent 70%);
     pointer-events: none;
   }
 
@@ -276,7 +266,7 @@
   }
 
   .section-light .sec-label { color: var(--verde-escuro); }
-  .section-dark  .sec-label { color: var(--verde-escuro); }
+  .section-dark  .sec-label { color: var(--amarelo); }
 
   .sec-title {
     font-family: 'Bebas Neue', sans-serif;
@@ -284,8 +274,8 @@
     line-height: 0.95;
   }
 
-  .section-light .sec-title { color: var(--amarelo); }
-  .section-dark  .sec-title { color: var(--amarelo); }
+  .section-light .sec-title { color: var(--preto); }
+  .section-dark  .sec-title { color: var(--branco); }
 
   .sec-title span { color: var(--verde); }
 
@@ -308,7 +298,7 @@
     display: flex;
     gap: 16px;
     padding: 8px 24px;
-    transition: transform 0.5s cubic-bezier(0.77,0,0.18,1);
+    transition: transform 0.5s cubic-bezier(0.77, 0, 0.18, 1);
     will-change: transform;
   }
 
@@ -317,7 +307,7 @@
     border-radius: 20px;
     overflow: hidden;
     flex-shrink: 0;
-    box-shadow: 0 6px 28px rgba(0,0,0,0.18);
+    box-shadow: 0 6px 28px rgba(0, 0, 0, 0.18);
     background: #ddd;
   }
 
@@ -342,10 +332,11 @@
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s;
+    background: rgba(0, 0, 0, 0.15);
   }
 
-  .section-light .carr-dot { background: rgba(0,0,0,0.15); }
-  .section-dark  .carr-dot { background: rgba(0,0,0,0.15); }
+  .section-dark .carr-dot { background: rgba(255, 255, 255, 0.25); }
+
   .carr-dot.active {
     background: var(--verde);
     width: 22px;
@@ -358,14 +349,15 @@
     align-items: center;
     gap: 6px;
     padding: 0 24px;
+    margin-bottom: 4px;
     font-size: 10px;
     font-weight: 600;
     letter-spacing: 1.5px;
     text-transform: uppercase;
   }
 
-  .section-light .scroll-hint { color: rgba(0,0,0,0.3); }
-  .section-dark  .scroll-hint { color: rgba(255,255,255,0.3); }
+  .section-light .scroll-hint { color: rgba(0, 0, 0, 0.3); }
+  .section-dark  .scroll-hint { color: rgba(255, 255, 255, 0.35); }
 
   .s-arrow {
     animation: arr 1.3s ease-in-out infinite;
@@ -373,8 +365,8 @@
   }
 
   @keyframes arr {
-    0%,100% { transform: translateX(0); opacity:.3; }
-    50%     { transform: translateX(4px); opacity:1; }
+    0%, 100% { transform: translateX(0); opacity: .3; }
+    50%       { transform: translateX(4px); opacity: 1; }
   }
 
   /* ======= DIVISOR ======= */
@@ -383,15 +375,16 @@
     align-items: center;
     gap: 12px;
     padding: 0 24px;
-    background: rgba(255,255,255,0.84);
+    background: rgba(255, 255, 255, 0.88);
     backdrop-filter: blur(6px);
   }
 
-  .div-line { flex:1; height:1px; background:rgba(0,0,0,0.1); }
-  .div-star  { color:var(--verde); font-size:18px; padding: 16px 0; }
+  .div-line { flex: 1; height: 1px; background: rgba(0, 0, 0, 0.1); }
+  .div-star  { color: var(--verde); font-size: 18px; padding: 16px 0; }
 
   /* ======= RODAPÉ ======= */
-  footer { background: var(--white); }
+  /* CORRIGIDO: usa --branco em vez de --white (que não existe) */
+  footer { background: var(--branco); }
 
   .foot-photo {
     position: relative;
@@ -405,10 +398,7 @@
     object-fit: cover;
     object-position: top center;
     filter: brightness(0.95);
-  }
-
-  .foot-photo-grad {
-    display: none;
+    display: block;
   }
 
   .foot-photo-text {
@@ -422,6 +412,7 @@
     font-size: 48px;
     color: var(--branco);
     line-height: 1;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.5);
   }
 
   .foot-photo-text .fc {
@@ -430,6 +421,7 @@
     text-transform: uppercase;
     color: var(--amarelo);
     font-weight: 700;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.4);
   }
 
   .foot-body { padding: 32px 24px 48px; }
@@ -448,7 +440,7 @@
     font-size: 10px;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: rgb(0, 0, 0);
+    color: rgba(0, 0, 0, 0.45);
     margin-bottom: 16px;
     font-weight: 700;
   }
@@ -472,20 +464,20 @@
     transition: transform 0.15s, opacity 0.15s;
   }
 
-  .soc-link:active { transform: scale(0.94); opacity:.8; }
-  .soc-link.ig  { background: linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); }
-  .soc-link.fb  { background: #1877f2; }
-  .soc-link.yt  { background: #ff0000; }
-  .soc-link.tt  { background:#111; border:1px solid rgba(255,255,255,0.15); }
+  .soc-link:active { transform: scale(0.94); opacity: .8; }
+  .soc-link.ig { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+  .soc-link.fb { background: #1877f2; }
+  .soc-link.yt { background: #ff0000; }
+  .soc-link.tt { background: #111; border: 1px solid rgba(255,255,255,0.15); }
 
-  .soc-icon { width:18px; height:18px; flex-shrink:0; }
+  .soc-icon { width: 18px; height: 18px; flex-shrink: 0; }
 
   .foot-copy {
     margin-top: 28px;
     padding-top: 20px;
-    border-top: 1px solid rgba(10, 10, 10, 0.003);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
     font-size: 11px;
-    color: rgb(14, 14, 14);
+    color: rgba(0, 0, 0, 0.35);
     text-align: center;
     line-height: 1.7;
   }
@@ -502,7 +494,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
     text-decoration: none;
     z-index: 1000;
     animation: wa-pulse 2.5s infinite;
@@ -510,7 +502,7 @@
   }
 
   .wa-fab:active { transform: scale(0.9); }
-  .wa-fab svg { width:30px; height:30px; fill:white; }
+  .wa-fab svg { width: 30px; height: 30px; fill: white; }
 
   .wa-tip {
     position: fixed;
@@ -528,26 +520,26 @@
     opacity: 0;
     transform: translateX(8px);
     animation: wa-tip-show 0.4s ease 2.5s forwards;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
   }
 
   .wa-tip::after {
-    content:'';
-    position:absolute;
-    right:-6px; top:50%;
-    transform:translateY(-50%);
-    border:6px solid transparent;
-    border-right:none;
-    border-left-color:var(--branco);
+    content: '';
+    position: absolute;
+    right: -6px; top: 50%;
+    transform: translateY(-50%);
+    border: 6px solid transparent;
+    border-right: none;
+    border-left-color: var(--branco);
   }
 
   @keyframes wa-pulse {
-    0%,100% { box-shadow: 0 4px 20px rgba(37,211,102,0.5); }
-    50%      { box-shadow: 0 4px 36px rgba(37,211,102,0.8), 0 0 0 10px rgba(37,211,102,0.08); }
+    0%, 100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5); }
+    50%       { box-shadow: 0 4px 36px rgba(37, 211, 102, 0.8), 0 0 0 10px rgba(37, 211, 102, 0.08); }
   }
 
   @keyframes wa-tip-show {
-    to { opacity:1; transform:translateX(0); }
+    to { opacity: 1; transform: translateX(0); }
   }
 </style>
 </head>
@@ -556,11 +548,13 @@
 <!-- ======= NAVBAR ======= -->
 <nav class="navbar">
   <a href="#inicio" class="navbar-logo">
-    <!-- Para inserir a logo real: substitua o "A" por <img src="logo.png" alt="Logo"> -->
     <div class="navbar-logo-circle">
-      <img src="assets/logo sem fundo.png" alt="Logo">
+      <!-- Logo real: deixe o src apontando para o arquivo correto -->
+      <img src="assets/logo sem fundo.png" alt="Logo Ana Paula">
     </div>
     <div class="navbar-brand">
+      Ana Paula
+      <small>Deputada Estadual</small>
     </div>
   </a>
 
@@ -575,16 +569,13 @@
 <section class="hero" id="inicio">
   <div class="hero-slides" id="heroSlides">
     <div class="hero-slide">
-      <!-- Foto 1: substitua pelo caminho real -->
       <img src="assets/2026.png" alt="Ana Paula 2026">
     </div>
     <div class="hero-slide">
-      <!-- Foto 2 -->
       <img src="assets/carrossel 1.jpg" alt="Ana Paula">
     </div>
     <div class="hero-slide">
-      <!-- Foto 3 -->
-      <img src="assets/carrossel 2.jpg" alt="Projeto Mulheres">
+      <img src="assets/carrossel 2.jpg" alt="Ana Paula">
     </div>
   </div>
 
@@ -602,6 +593,10 @@
     <div class="sec-label">✅ Legislatura 2023–2026</div>
     <div class="sec-title">Projetos<br><span>Aprovados</span></div>
     <div class="sec-bar"></div>
+  </div>
+
+  <div class="scroll-hint">
+    Deslize para ver mais &nbsp;<span class="s-arrow">›</span>
   </div>
 
   <div class="carr-wrap" id="wrap1">
@@ -648,7 +643,6 @@
   <div class="carr-wrap" id="wrap2">
     <div class="carr-track" id="track2">
       <div class="carr-card">
-        <!-- Substitua pelos projetos futuros reais -->
         <img src="assets/projeto4.jpg" alt="Projeto Mulheres">
       </div>
       <div class="carr-card">
@@ -673,10 +667,13 @@
 </div>
 
 <!-- ======= RODAPÉ ======= -->
+<!-- CORRIGIDO: estrutura HTML do rodapé sem divs sobrando -->
 <footer id="contato">
   <div class="foot-photo">
     <img src="assets/foot.png" alt="Deputada Ana Paula">
-    <div class="foot-photo-grad"></div>     
+    <div class="foot-photo-text">
+      <div class="fn">Ana Paula</div>
+      <div class="fc">Deputada Estadual · Piauí</div>
     </div>
   </div>
 
@@ -686,19 +683,27 @@
     <div class="soc-title">Siga nas redes sociais</div>
     <div class="soc-links">
       <a href="https://instagram.com" class="soc-link ig" target="_blank" rel="noopener">
-        <svg class="soc-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        <svg class="soc-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
         Instagram
       </a>
       <a href="https://facebook.com" class="soc-link fb" target="_blank" rel="noopener">
-        <svg class="soc-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        <svg class="soc-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
         Facebook
       </a>
       <a href="https://youtube.com" class="soc-link yt" target="_blank" rel="noopener">
-        <svg class="soc-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        <svg class="soc-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+        </svg>
         YouTube
       </a>
       <a href="https://tiktok.com" class="soc-link tt" target="_blank" rel="noopener">
-        <svg class="soc-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+        <svg class="soc-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+        </svg>
         TikTok
       </a>
     </div>
@@ -711,27 +716,26 @@
 </footer>
 
 <!-- WHATSAPP FAB -->
+<div class="wa-tip">Fale com a equipe!</div>
 <a href="https://wa.me/5586999999999?text=Olá!%20Gostaria%20de%20falar%20com%20a%20equipe%20da%20Deputada%20Ana%20Paula."
    class="wa-fab" target="_blank" rel="noopener" aria-label="WhatsApp">
-  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <svg viewBox="0 0 24 24">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
 </a>
 
 <script>
-// ======= HERO =======
+// ======= NAVBAR SCROLL =======
+const navbar = document.querySelector('.navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 10);
+}, { passive: true });
+
+// ======= HERO CARROSSEL =======
 const hSlides = document.getElementById('heroSlides');
 const hDots   = document.getElementById('heroDots');
 let hIdx = 0;
 const hTotal  = hSlides.querySelectorAll('.hero-slide').length;
-
-const navbar = document.querySelector('.navbar');
-
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 10) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
-  }
-});
 
 for (let i = 0; i < hTotal; i++) {
   const d = document.createElement('div');
@@ -743,25 +747,25 @@ for (let i = 0; i < hTotal; i++) {
 function goH(n) {
   hIdx = (n + hTotal) % hTotal;
   hSlides.style.transform = `translateX(-${hIdx * 100}%)`;
-  hDots.querySelectorAll('.hero-dot').forEach((d,i) => d.classList.toggle('active', i === hIdx));
+  hDots.querySelectorAll('.hero-dot').forEach((d, i) => d.classList.toggle('active', i === hIdx));
 }
 
 document.getElementById('heroPrev').onclick = () => goH(hIdx - 1);
 document.getElementById('heroNext').onclick = () => goH(hIdx + 1);
-setInterval(() => goH(hIdx + 1), 4800);
+setInterval(() => goH(hIdx + 1), 5000);
 
 let hTx = null;
-hSlides.addEventListener('touchstart', e => { hTx = e.touches[0].clientX; }, {passive:true});
+hSlides.addEventListener('touchstart', e => { hTx = e.touches[0].clientX; }, { passive: true });
 hSlides.addEventListener('touchend',   e => {
   if (!hTx) return;
-  const d = hTx - e.changedTouches[0].clientX;
-  if (Math.abs(d) > 40) goH(hIdx + (d > 0 ? 1 : -1));
+  const diff = hTx - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 40) goH(hIdx + (diff > 0 ? 1 : -1));
   hTx = null;
 });
 
-// ======= CARROSSEL GENÉRICO =======
+// ======= CARROSSEL DE PROJETOS =======
 function initCarr(trackId, dotsId) {
-  const track = document.getElementById(trackId);
+  const track  = document.getElementById(trackId);
   const dotsEl = document.getElementById(dotsId);
   if (!track || !dotsEl) return;
 
@@ -769,6 +773,7 @@ function initCarr(trackId, dotsId) {
   const total = cards.length;
   let idx = 0;
 
+  dotsEl.innerHTML = '';
   for (let i = 0; i < total; i++) {
     const d = document.createElement('div');
     d.className = 'carr-dot' + (i === 0 ? ' active' : '');
@@ -777,14 +782,14 @@ function initCarr(trackId, dotsId) {
   }
 
   function go(n) {
-    idx = Math.max(0, Math.min(n, total - 1));
+    idx = (n + total) % total;
     const w = cards[0].offsetWidth + 16;
     track.style.transform = `translateX(-${idx * w}px)`;
-    dotsEl.querySelectorAll('.carr-dot').forEach((d,i) => d.classList.toggle('active', i === idx));
+    dotsEl.querySelectorAll('.carr-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
   }
 
   let tx = null;
-  track.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, {passive:true});
+  track.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
   track.addEventListener('touchend',   e => {
     if (!tx) return;
     const diff = tx - e.changedTouches[0].clientX;
@@ -796,16 +801,16 @@ function initCarr(trackId, dotsId) {
 initCarr('track1', 'dots1');
 initCarr('track2', 'dots2');
 
-// ======= NAVBAR ACTIVE =======
+// ======= NAVBAR LINK ATIVO =======
 const navLinks = document.querySelectorAll('.navbar-link');
-const anchors  = ['inicio','projetos','contato'].map(id => document.getElementById(id));
+const anchors  = ['inicio', 'projetos', 'contato'].map(id => document.getElementById(id));
 
 window.addEventListener('scroll', () => {
-  const y = window.scrollY + 80;
+  const y = window.scrollY + 100;
   let cur = 0;
   anchors.forEach((el, i) => { if (el && el.offsetTop <= y) cur = i; });
-  navLinks.forEach((l,i) => l.classList.toggle('active', i === cur));
-}, {passive:true});
+  navLinks.forEach((l, i) => l.classList.toggle('active', i === cur));
+}, { passive: true });
 </script>
 </body>
 </html>
