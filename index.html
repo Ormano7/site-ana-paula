@@ -393,14 +393,19 @@
 
   .foot-photo {
     position: relative;
-    /* height: auto deixa a imagem mostrar na sua proporção original */
+    /* Altura limitada para não dominar a tela no celular */
+    height: 56vw;
+    max-height: 320px;
+    min-height: 200px;
     overflow: hidden;
   }
 
   .foot-photo img {
     width: 100%;
-    height: auto;            /* altura proporcional — sem corte */
-    object-fit: contain;     /* garante que tudo seja visível */
+    height: 100%;
+    object-fit: cover;
+    /* Puxa a imagem para baixo, garantindo que a frase embutida apareça */
+    object-position: center bottom;
     display: block;
   }
 
@@ -410,7 +415,7 @@
 
   .foot-photo-text {
     position: absolute;
-    bottom: 24px;
+    bottom: 12px;
     left: 24px;
   }
 
