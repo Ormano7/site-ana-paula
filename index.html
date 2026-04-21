@@ -21,7 +21,7 @@
   body {
     font-family: 'Montserrat', sans-serif;
     background-color: #f4f4ee;
-    background-image: url('bandeir.png');
+    background-image: url('assets/bandeir.png');
     background-size: cover;
     background-attachment: fixed;
     background-position: center center;
@@ -49,17 +49,7 @@
     justify-content: space-between;
     padding: 0 16px;
     z-index: 900;
-  }
-  .navbar {
-   transition: background 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
-  }
-
-/* estado quando rolar a página */
-  .navbar.scrolled {
-    background: rgba(255, 255, 255, 0.65);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    transition: background 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
   }
 
   .navbar.scrolled {
@@ -80,24 +70,23 @@
     text-decoration: none;
   }
 
-  /* Área para a logo — troque o conteúdo pelo <img> da logo real */
   .navbar-logo-circle {
-  width: 46px;
-  height: 46px;
-  border-radius: 10px; /* menos arredondado (mais moderno que círculo) */
-  background: transparent; /* remove fundo verde se não precisar */
-  border: none; /* remove borda amarela */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
+    width: 46px;
+    height: 46px;
+    border-radius: 10px;
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
 
-.navbar-logo-circle img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* NÃO cortar a logo */
-}
+  .navbar-logo-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 
   .navbar-brand {
     font-family: 'Dancing Script', cursive;
@@ -142,35 +131,36 @@
     background: rgba(245,216,0,0.1);
   }
 
-  /* ======= HERO ======= */
+  /* ======= HERO — CORRIGIDO =======
+     O container ocupa a tela menos a navbar.
+     As imagens preenchem 100% desse container, sem transbordamento.
+  ======= */
   .hero {
     position: relative;
-    height: 100svh;
+    /* Desconta exatamente a altura da navbar para não esconder conteúdo */
+    height: calc(100svh - var(--navbar-h));
     min-height: 500px;
+    margin-top: var(--navbar-h); /* empurra o hero para baixo da navbar fixa */
     overflow: hidden;
-    padding-top: var(--navbar-h);
   }
 
   .hero-slides {
     display: flex;
-    width: 100%;
-    height: 100vh;
+    height: 100%;
     transition: transform 0.5s ease-in-out;
   }
 
   .hero-slide {
-    /* Isso impede que o slide mostre um pedaço do vizinho */
-    min-width: 100%; 
-    width: 100%;
     height: 100%;
-    flex-shrink: 0; 
+    flex-shrink: 0;
     overflow: hidden;
+    position: relative;
   }
 
-  /* SEM overlay — imagem totalmente visível */
+  /* object-fit: cover garante que a imagem preenche o slide sem vazar */
   .hero-slide img {
     width: 100%;
-    height: 100vh; /* Ou a altura que você definiu */
+    height: 100%;
     object-fit: cover;
     object-position: center top;
     display: block;
@@ -350,6 +340,7 @@
 
   .section-light .carr-dot { background: rgba(0,0,0,0.15); }
   .section-dark  .carr-dot { background: rgba(0,0,0,0.15); }
+
   .carr-dot.active {
     background: var(--verde);
     width: 22px;
@@ -394,21 +385,23 @@
   .div-line { flex:1; height:1px; background:rgba(0,0,0,0.1); }
   .div-star  { color:var(--verde); font-size:18px; padding: 16px 0; }
 
-  /* ======= RODAPÉ ======= */
-  footer { background: var(--white); }
+  /* ======= RODAPÉ — CORRIGIDO =======
+     A foto agora tem altura automática (auto) para mostrar
+     a imagem inteira sem cortes, em vez de altura fixa.
+  ======= */
+  footer { background: var(--branco); }
 
   .foot-photo {
     position: relative;
-    height: 320px;
+    /* height: auto deixa a imagem mostrar na sua proporção original */
     overflow: hidden;
   }
 
   .foot-photo img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top center;
-    filter: brightness(0.95);
+    height: auto;            /* altura proporcional — sem corte */
+    object-fit: contain;     /* garante que tudo seja visível */
+    display: block;
   }
 
   .foot-photo-grad {
@@ -560,7 +553,6 @@
 <!-- ======= NAVBAR ======= -->
 <nav class="navbar">
   <a href="#inicio" class="navbar-logo">
-    <!-- Para inserir a logo real: substitua o "A" por <img src="logo.png" alt="Logo"> -->
     <div class="navbar-logo-circle">
       <img src="assets/logo sem fundo.png" alt="Logo">
     </div>
@@ -576,18 +568,16 @@
 </nav>
 
 <!-- ======= HERO ======= -->
+<!-- margin-top via CSS empurra para baixo da navbar; id="inicio" mantém âncora no topo correto -->
 <section class="hero" id="inicio">
   <div class="hero-slides" id="heroSlides">
     <div class="hero-slide">
-      <!-- Foto 1: substitua pelo caminho real -->
       <img src="assets/2026.png" alt="Ana Paula 2026">
     </div>
     <div class="hero-slide">
-      <!-- Foto 2 -->
       <img src="assets/carrossel 1.jpg" alt="Ana Paula">
     </div>
     <div class="hero-slide">
-      <!-- Foto 3 -->
       <img src="assets/carrossel 2.jpg" alt="Projeto Mulheres">
     </div>
   </div>
@@ -652,7 +642,6 @@
   <div class="carr-wrap" id="wrap2">
     <div class="carr-track" id="track2">
       <div class="carr-card">
-        <!-- Substitua pelos projetos futuros reais -->
         <img src="assets/projeto4.jpg" alt="Projeto Mulheres">
       </div>
       <div class="carr-card">
@@ -670,13 +659,11 @@
   <div class="carr-dots" id="dots2"></div>
 </section>
 
-
 <!-- ======= RODAPÉ ======= -->
 <footer id="contato">
+  <!-- CORRIGIDO: estrutura limpa, sem divs extras -->
   <div class="foot-photo">
     <img src="assets/foot.png" alt="Deputada Ana Paula">
-    <div class="foot-photo-grad"></div>     
-    </div>
   </div>
 
   <div class="foot-body">
@@ -716,20 +703,24 @@
 </a>
 
 <script>
+// ======= NAVBAR SCROLL =======
+const navbar = document.querySelector('.navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 10);
+}, { passive: true });
+
 // ======= HERO =======
 const hSlides = document.getElementById('heroSlides');
 const hDots   = document.getElementById('heroDots');
 let hIdx = 0;
-const hTotal  = hSlides.querySelectorAll('.hero-slide').length;
+const hSlideEls = hSlides.querySelectorAll('.hero-slide');
+const hTotal    = hSlideEls.length;
 
-const navbar = document.querySelector('.navbar');
-
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 10) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
-  }
+// Define larguras dinamicamente para qualquer nº de slides
+// O track tem largura = hTotal × 100% do container
+hSlides.style.width = (hTotal * 100) + '%';
+hSlideEls.forEach(slide => {
+  slide.style.width = (100 / hTotal) + '%';
 });
 
 for (let i = 0; i < hTotal; i++) {
@@ -741,7 +732,8 @@ for (let i = 0; i < hTotal; i++) {
 
 function goH(n) {
   hIdx = (n + hTotal) % hTotal;
-  hSlides.style.transform = `translateX(-${hIdx * 100}%)`;
+  // Translada pelo percentual correto dentro do track expandido
+  hSlides.style.transform = `translateX(-${hIdx * (100 / hTotal)}%)`;
   hDots.querySelectorAll('.hero-dot').forEach((d,i) => d.classList.toggle('active', i === hIdx));
 }
 
@@ -750,12 +742,29 @@ document.getElementById('heroNext').onclick = () => goH(hIdx + 1);
 setInterval(() => goH(hIdx + 1), 4800);
 
 let hTx = null;
-hSlides.addEventListener('touchstart', e => { hTx = e.touches[0].clientX; }, {passive:true});
-hSlides.addEventListener('touchend',   e => {
-  if (!hTx) return;
-  const d = hTx - e.changedTouches[0].clientX;
-  if (Math.abs(d) > 40) goH(hIdx + (d > 0 ? 1 : -1));
+let hTy = null;
+let hSwiping = false;
+
+hSlides.addEventListener('touchstart', e => {
+  hTx = e.touches[0].clientX;
+  hTy = e.touches[0].clientY;
+  hSwiping = false;
+}, { passive: true });
+
+hSlides.addEventListener('touchmove', e => {
+  if (hTx === null) return;
+  const dx = Math.abs(e.touches[0].clientX - hTx);
+  const dy = Math.abs(e.touches[0].clientY - hTy);
+  if (dx > dy && dx > 8) hSwiping = true;
+}, { passive: true });
+
+hSlides.addEventListener('touchend', e => {
+  if (hTx === null) return;
+  const diff = hTx - e.changedTouches[0].clientX;
+  if (hSwiping && Math.abs(diff) > 30) goH(hIdx + (diff > 0 ? 1 : -1));
   hTx = null;
+  hTy = null;
+  hSwiping = false;
 });
 
 // ======= CARROSSEL GENÉRICO =======
@@ -768,6 +777,7 @@ function initCarr(trackId, dotsId) {
   const total = cards.length;
   let idx = 0;
 
+  dotsEl.innerHTML = '';
   for (let i = 0; i < total; i++) {
     const d = document.createElement('div');
     d.className = 'carr-dot' + (i === 0 ? ' active' : '');
@@ -776,19 +786,43 @@ function initCarr(trackId, dotsId) {
   }
 
   function go(n) {
-    idx = Math.max(0, Math.min(n, total - 1));
+    // Circular: volta ao último se tentar ir antes do primeiro, e vice-versa
+    idx = (n + total) % total;
     const w = cards[0].offsetWidth + 16;
     track.style.transform = `translateX(-${idx * w}px)`;
-    dotsEl.querySelectorAll('.carr-dot').forEach((d,i) => d.classList.toggle('active', i === idx));
+    dotsEl.querySelectorAll('.carr-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
   }
 
-  let tx = null;
-  track.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, {passive:true});
-  track.addEventListener('touchend',   e => {
-    if (!tx) return;
-    const diff = tx - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 40) go(idx + (diff > 0 ? 1 : -1));
-    tx = null;
+  // Touch com prevenção de conflito com scroll vertical
+  let txStart = null;
+  let tyStart = null;
+  let isSwiping = false;
+
+  track.addEventListener('touchstart', e => {
+    txStart = e.touches[0].clientX;
+    tyStart = e.touches[0].clientY;
+    isSwiping = false;
+  }, { passive: true });
+
+  track.addEventListener('touchmove', e => {
+    if (txStart === null) return;
+    const dx = Math.abs(e.touches[0].clientX - txStart);
+    const dy = Math.abs(e.touches[0].clientY - tyStart);
+    // Só considera swipe horizontal se X for maior que Y
+    if (dx > dy && dx > 8) {
+      isSwiping = true;
+    }
+  }, { passive: true });
+
+  track.addEventListener('touchend', e => {
+    if (txStart === null) return;
+    const diff = txStart - e.changedTouches[0].clientX;
+    if (isSwiping && Math.abs(diff) > 30) {
+      go(idx + (diff > 0 ? 1 : -1));
+    }
+    txStart = null;
+    tyStart = null;
+    isSwiping = false;
   });
 }
 
